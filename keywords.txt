@@ -1,0 +1,61 @@
+#######################################
+# Syntax Coloring Map For WiFiNINA
+#######################################
+
+#######################################
+# Library (KEYWORD1)
+#######################################
+
+
+Gamepad KEYWORD1
+Bluepad32 KEYWORD1
+BP32 KEYWORD1
+
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+
+# Bluepad32
+firmwareVersion KEYWORD2
+setDebug KEYWORD2
+pinMode KEYWORD2
+digitalRead KEYWORD2
+digitalWrite KEYWORD2
+
+# Gamepad
+update KEYWORD2
+forgetBluetoothKeys KEYWORD2
+setup KEYWORD2
+a KEYWORD2
+b KEYWORD2
+x KEYWORD2
+y KEYWORD2
+l1 KEYWORD2
+l2 KEYWORD2
+r1 KEYWORD2
+r2 KEYWORD2
+thumbL KEYWORD2
+thumbR KEYWORD2
+buttons KEYWORD2
+miscButtons KEYWORD2
+axisX KEYWORD2
+axisY KEYWORD2
+axisRX KEYWORD2
+axisRY KEYWORD2
+brake KEYWORD2
+throttle KEYWORD2
+miscSystem KEYWORD2
+miscBack KEYWORD2
+miscHome KEYWORD2
+isConnected KEYWORD2
+getModel KEYWORD2
+setPlayerLEDs KEYWORD2
+setColorLED KEYWORD2
+setRumble KEYWORD2
+
+
+#######################################
+# Constants (LITERAL1)
+#######################################
+

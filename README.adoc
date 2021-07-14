@@ -1,0 +1,50 @@
+// Define the repository information in these attributes
+:repository-owner: ricardoquesasda
+:repository-name: bluepad32-arduino
+:project-name: Bluepad32
+
+= {project-name} library for Arduino =
+
+Enables gamepad support for NINA-based boards, like:
+
+* Arduino Nano RP2040 Connect
+* Arduino Nano 33 IoT
+* Arduino MKR WiFi 1010
+* etc.
+
+These boards have two processors:
+
+* The main one, where the Arduino sketches run
+* And the NINA (ESP32), which is used only to provide WiFi connectivity.
+
+In order to use this library, you have to flash the Bluepad32 firmware in NINA.
+This is a simple step that should only be done once, and can be undone at any time.
+
+More info about Bluepad32 for NINA here:
+
+* Instructions: https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/docs/plat_nina.md
+* Download: https://gitlab.com/ricardoquesada/bluepad32/-/releases
+
+
+With this library you can use any modern Bluetooth gamepad in Arduino. Some of the supported gamepads, but not limited to are:
+
+* DualSense (PS5)
+* DualShock 4 (PS4)
+* DualShock 3 (PS3)
+* Wii Mote and extensions
+* Wii U gamepad
+* Switch gamepad
+* Switch Joy-cons
+* Xbox One S
+* Android gamepads
+* Window gamepads
+* 8Bitdo gamepads
+* iCade
+* and more
+
+== License ==
+
+Copyright (c) 2021 Ricardo Quesada
+
+SPDX-License-Identifier: Apache 2.0 or LGPL-2.1-or-later
+

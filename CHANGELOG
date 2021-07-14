@@ -1,0 +1,14 @@
+Bluepad32 0.9.0 - 2021.07.17
+
+* Initial public release
+* Supports:
+  * fetch all gamepad buttons/axis
+  * allows setting rumble
+  * allows setting players LED
+  * allows setting color LED
+* Supports the following NINA commands
+  * check firmware version
+  * diginal write
+  * digital read
+  * pin mode
+  * set debug mode
