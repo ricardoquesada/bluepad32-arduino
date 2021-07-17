@@ -5,6 +5,10 @@
 
 = {project-name} library for Arduino =
 
+
+image::https://lh3.googleusercontent.com/pw/AM-JKLWUZS_vlkMmd3o8EKzXlYCS0uriEW_gXfOoiFqZlABJi_dM1GWYHGafrdMnTP-VHgVdCdVA4pUageZgyI98RH1SHtydac2yyrx_vJVXgWPYBFN-SJoOikdlGuOowPoDqYOwfKU39yketYPJyRJlIPwjEw=-no
+
+
 Enables gamepad support for NINA-based boards, like:
 
 * Arduino Nano RP2040 Connect
