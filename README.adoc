@@ -6,7 +6,7 @@
 = {project-name} library for Arduino =
 
 
-image::https://lh3.googleusercontent.com/pw/AM-JKLWUZS_vlkMmd3o8EKzXlYCS0uriEW_gXfOoiFqZlABJi_dM1GWYHGafrdMnTP-VHgVdCdVA4pUageZgyI98RH1SHtydac2yyrx_vJVXgWPYBFN-SJoOikdlGuOowPoDqYOwfKU39yketYPJyRJlIPwjEw=-no
+image::https://lh3.googleusercontent.com/pw/AM-JKLWUZS_vlkMmd3o8EKzXlYCS0uriEW_gXfOoiFqZlABJi_dM1GWYHGafrdMnTP-VHgVdCdVA4pUageZgyI98RH1SHtydac2yyrx_vJVXgWPYBFN-SJoOikdlGuOowPoDqYOwfKU39yketYPJyRJlIPwjEw=-no[gamepads]
 
 
 Enables gamepad support for NINA-based boards, like:
@@ -16,13 +16,13 @@ Enables gamepad support for NINA-based boards, like:
 * Arduino MKR WiFi 1010
 * etc.
 
-These boards have two processors:
+What's unique about these boards, is that they have two processors:
 
 * The main one, where the Arduino sketches run
-* And the NINA (ESP32), which is used only to provide WiFi connectivity.
+* And the NINA (ESP32), which is used just to provide WiFi connectivity.
 
-In order to use this library, you have to flash the Bluepad32 firmware in NINA.
-This is a simple step that should only be done once, and can be undone at any time.
+In order to use this library, you have to flash the Bluepad32 firmware in the NINA (ESP32) processor.
+This is a simple step that needs to be done just once, and can be undone at any time.
 
 More info about Bluepad32 for NINA here:
 
@@ -35,11 +35,11 @@ With this library you can use any modern Bluetooth gamepad in Arduino. Some of t
 * DualSense (PS5)
 * DualShock 4 (PS4)
 * DualShock 3 (PS3)
-* Wii Mote and extensions
-* Wii U gamepad
 * Switch gamepad
 * Switch Joy-cons
 * Xbox One S
+* WiiMote and extensions
+* Wii U gamepad
 * Android gamepads
 * Window gamepads
 * 8Bitdo gamepads

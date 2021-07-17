@@ -40,7 +40,6 @@
     Serial.print("]");      \
   } while (0);
 
-#define _DEBUG_
 #ifdef _DEBUG_
 
 #define INFO(format, args...)   \
@@ -76,7 +75,7 @@
   } while (0);
 #endif
 
-#if 1
+#if 0
 #define WARN(args)        \
   do {                    \
     PRINT_FILE_LINE()     \

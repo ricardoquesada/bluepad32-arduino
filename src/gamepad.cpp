@@ -53,13 +53,13 @@ void Gamepad::setColorLED(uint8_t red, uint8_t green, uint8_t blue) const {
     return;
   }
 
+  uint8_t colors[3] = {red, green, blue};
+
   WAIT_FOR_SLAVE_SELECT();
   // Send Command
   SpiDrv::sendCmd(BP32_SET_GAMEPAD_COLOR_LED, PARAM_NUMS_4);
   SpiDrv::sendParam((uint8_t*)&_state.idx, 1, NO_LAST_PARAM);
-  SpiDrv::sendParam((uint8_t*)&red, 1, NO_LAST_PARAM);
-  SpiDrv::sendParam((uint8_t*)&green, 1, NO_LAST_PARAM);
-  SpiDrv::sendParam((uint8_t*)&blue, 1, LAST_PARAM);
+  SpiDrv::sendParam(colors, 3, LAST_PARAM);
 
   // pad to multiple of 4
   SpiDrv::readChar();
@@ -90,12 +90,13 @@ void Gamepad::setRumble(uint8_t force, uint8_t duration) const {
     return;
   }
 
+  uint8_t rumble[2] = {force, duration};
+
   WAIT_FOR_SLAVE_SELECT();
   // Send Command
   SpiDrv::sendCmd(BP32_SET_GAMEPAD_RUMBLE, PARAM_NUMS_3);
   SpiDrv::sendParam((uint8_t*)&_state.idx, 1, NO_LAST_PARAM);
-  SpiDrv::sendParam((uint8_t*)&force, 1, NO_LAST_PARAM);
-  SpiDrv::sendParam((uint8_t*)&duration, 1, LAST_PARAM);
+  SpiDrv::sendParam(rumble, 2, LAST_PARAM);
 
   // already padded to multiple of 4
 
