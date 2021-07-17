@@ -45,13 +45,16 @@ With this library you can use any modern Bluetooth gamepad in Arduino. Some of t
 * iCade
 * and more
 
+For a complete list, see: https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/supported_gamepads.md
+
 == Use cases ==
 
 You can use this library to:
 
 * Create a video game
-* Or control a car
+* Or control a car / robot
 * Or control LEDs, motor, etc.
+* Or to draw a curtain, open a window, control a fan, etc.
 * etc.
 
 == License ==
