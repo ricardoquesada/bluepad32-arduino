@@ -5,13 +5,15 @@
 
 = {project-name} library for Arduino =
 
+image::https://img.shields.io/discord/775177861665521725.svg[link=https://discord.gg/r5aMn6Cw5q]
+
 image::bluepad32-arduino-logo.png[logo]
 
 Enables gamepad support for NINA-based boards, like:
 
-* Arduino Nano RP2040 Connect
-* Arduino Nano 33 IoT
-* Arduino MKR WiFi 1010
+* https://store.arduino.cc/usa/nano-rp2040-connect-with-headers[Arduino Nano RP2040 Connect]
+* https://store.arduino.cc/usa/nano-33-iot[Arduino Nano 33 IoT]
+* https://store.arduino.cc/usa/mkr-wifi-1010[Arduino MKR WiFi 1010]
 * etc.
 
 What's unique about these boards, is that they have two processors:
