@@ -7,7 +7,7 @@
 
 image::https://img.shields.io/discord/775177861665521725.svg[link=https://discord.gg/r5aMn6Cw5q]
 
-image::bluepad32-arduino-logo.png[logo]
+image::img/bluepad32-arduino-logo.png[logo]
 
 Enables gamepad support for NINA-based boards, like:
 
@@ -16,39 +16,45 @@ Enables gamepad support for NINA-based boards, like:
 * https://store.arduino.cc/usa/mkr-wifi-1010[Arduino MKR WiFi 1010]
 * etc.
 
-What's unique about these boards, is that they have two processors:
-
-* The main one, where the Arduino sketches run
-* And the NINA (ESP32), which is used just to provide WiFi connectivity.
-
-In order to use this library, you have to flash the Bluepad32 firmware in the NINA (ESP32) processor.
-This is a simple step that needs to be done just once, and can be undone at any time.
-More info about Bluepad32 for NINA here:
-
-* Instructions: https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/docs/plat_nina.md
-* Download: https://gitlab.com/ricardoquesada/bluepad32/-/releases
-
 == Supported gamepads ==
 
 image::https://lh3.googleusercontent.com/pw/AM-JKLWUZS_vlkMmd3o8EKzXlYCS0uriEW_gXfOoiFqZlABJi_dM1GWYHGafrdMnTP-VHgVdCdVA4pUageZgyI98RH1SHtydac2yyrx_vJVXgWPYBFN-SJoOikdlGuOowPoDqYOwfKU39yketYPJyRJlIPwjEw=-no[gamepads]
 
 With this library you can use any modern Bluetooth gamepad in Arduino. Some of the supported gamepads, but not limited to, are:
 
-* DualSense (PS5)
-* DualShock 4 (PS4)
-* DualShock 3 (PS3)
-* Switch gamepad
-* Switch Joy-cons
+* Sony family: DualSense (PS5), DualShock 4 (PS4), DualShock 3 (PS3)
+* Nintendo family: Switch gamepads, Switch JoyCons, Wii, Wii U
 * Xbox One S
-* WiiMote and extensions
-* Wii U gamepad
 * Android gamepads
 * Window gamepads
-* 8Bitdo gamepads
-* iCade
 * and more
 
 For a complete list, see: https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/supported_gamepads.md
+
+== How does it work ==
+
+As mentioned above, only  boards with the NINA (ESP32) co-processor are supported.
+This is because the project is split in two:
+
+* "Bluepad32 library for Arduino", runs on the main processor: "B"
+* "Bluepad32 firmware", runs on the NINA co-processor: "C"
+
+image::img/bluepad32-how-does-it-work.png[how does it work]
+
+
+The gamepads (A), using Bluetooth, connect to the NINA co-processor (B).
+
+And NINA (B) sends the gamepad data to the main processor \(C). In this case the
+main processor is the RP2040, but it could be different on other boards. As an example,
+on the Nano 33 IoT, the main processor is the SAMD 21.
+
+So, in order to use the library you have to flash the "Bluepad32 firmware" on NINA.
+This is a simple step that needs to be done just once, and can be undone at any time.
+Info about Bluepad32 firmware is avaiable here:
+
+* Bluepad32 firmware doc: https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/docs/plat_nina.md
+* Download: https://gitlab.com/ricardoquesada/bluepad32/-/releases
+
 
 == Use cases ==
 
