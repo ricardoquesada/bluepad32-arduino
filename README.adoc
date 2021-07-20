@@ -34,10 +34,10 @@ For a complete list, see: https://gitlab.com/ricardoquesada/bluepad32/-/blob/mai
 == How does it work ==
 
 As mentioned above, only  boards with the NINA (ESP32) co-processor are supported.
-This is because the project is split in two:
+This is because the project consists of two parts:
 
-* "Bluepad32 library for Arduino", runs on the main processor: "B"
-* "Bluepad32 firmware", runs on the NINA co-processor: "C"
+* "Bluepad32 library for Arduino", runs on the main processor: "C"
+* "Bluepad32 firmware", runs on the NINA co-processor: "B"
 
 image::img/bluepad32-how-does-it-work.png[how does it work]
 
