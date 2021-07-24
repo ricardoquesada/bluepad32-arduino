@@ -3,6 +3,7 @@
 
 #include "bluepad32.h"
 
+#include <Arduino.h>
 #include <inttypes.h>
 
 #include "constants.h"
@@ -10,7 +11,7 @@
 #include "utility/spi_drv.h"
 #include "utility/wl_types.h"
 
-const char BLUEPAD32_LATEST_FIRMWARE_VERSION[] = "v0.5.0";
+const char BLUEPAD32_LATEST_FIRMWARE_VERSION[] = "v2.2.1";
 
 Bluepad32::Bluepad32()
     : _prevConnectedGamepads(0), _gamepads(), _onConnect(), _onDisconnect() {}
