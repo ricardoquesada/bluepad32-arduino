@@ -12,7 +12,7 @@
  * Created 17 October 2018 by Riccardo Rosario Rizzo
  * This code is in the public domain.
  */
-#include <BP32.h>
+#include <Bluepad32.h>
 
 void setup() {
   // Initialize serial

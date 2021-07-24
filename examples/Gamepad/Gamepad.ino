@@ -11,7 +11,7 @@
  *  - Nano 33 IoT,
  *  - etc.
  */
-#include <BP32.h>
+#include <Bluepad32.h>
 
 GamepadPtr myGamepad;
 

@@ -8,8 +8,8 @@
 
 #include <functional>
 
+#include "Gamepad.h"
 #include "constants.h"
-#include "gamepad.h"
 
 extern const char BLUEPAD32_LATEST_FIRMWARE_VERSION[];
 
