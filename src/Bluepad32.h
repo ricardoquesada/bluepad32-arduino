@@ -6,14 +6,14 @@
 
 #include <inttypes.h>
 
-#include <functional>
-
 #include "Gamepad.h"
 #include "constants.h"
 
 extern const char BLUEPAD32_LATEST_FIRMWARE_VERSION[];
 
-typedef std::function<void(GamepadPtr gamepad)> GamepadCallback;
+// Using C callbacks since AVR-GCC (needed for Arduino UNO WiFi) doesn't support
+// STL
+typedef void (*GamepadCallback)(GamepadPtr gamepad);
 
 class Bluepad32 {
   // This is what the user receives
