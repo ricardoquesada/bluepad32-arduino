@@ -17,15 +17,20 @@ Enables gamepad support for NINA-based boards, like:
 * http://store.arduino.cc/products/arduino-uno-wifi-rev2[Arduino UNO WiFi Rev2]
 * etc.
 
+If you are looking for Arduino running on ESP32 boards, check out this other project:
+
+* https://gitlab.com/ricardoquesada/esp-idf-arduino-bluepad32-template[Arduino + Bluepad32 on ESP32 boards]
+
 == Supported gamepads ==
 
-image::https://lh3.googleusercontent.com/pw/AM-JKLWUZS_vlkMmd3o8EKzXlYCS0uriEW_gXfOoiFqZlABJi_dM1GWYHGafrdMnTP-VHgVdCdVA4pUageZgyI98RH1SHtydac2yyrx_vJVXgWPYBFN-SJoOikdlGuOowPoDqYOwfKU39yketYPJyRJlIPwjEw=-no[gamepads]
+image::https://lh3.googleusercontent.com/pw/AM-JKLXpmyDvNXZ_LmlmBSYObRZDhwuY6hHXXBzAicFw1YH1QNSgZrpiPWXZMiPNM0ATgrockqGf5bLsI3fWceJtQQEj2_OroHs1SrxsgmS8Rh4XHlnFolchomsTPVC7o5zi4pXGQkhGEFbinoh3-ub_a4lQIw=-no[gamepads]
 
 With this library you can use any modern Bluetooth gamepad in Arduino. Some of the supported gamepads, but not limited to, are:
 
 * Sony family: DualSense (PS5), DualShock 4 (PS4), DualShock 3 (PS3)
 * Nintendo family: Switch gamepads, Switch JoyCons, Wii, Wii U
-* Xbox One S
+* Xbox Wireless controller (model 1708)
+* 8BitDo gamepads
 * Android gamepads
 * Window gamepads
 * and more
