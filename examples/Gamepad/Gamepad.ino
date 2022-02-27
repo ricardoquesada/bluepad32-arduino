@@ -1,4 +1,4 @@
-// Copyright 2021 - 2021, Ricardo Quesada
+// Copyright 2021 - 2022, Ricardo Quesada
 // SPDX-License-Identifier: Apache 2.0 or LGPL-2.1-or-later
 
 /*
@@ -34,6 +34,13 @@ void setup() {
 
   // This call is mandatory. It setups Bluepad32 and creates the callbacks.
   BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
+
+  // "forgetBluetoothKeys()" should be called when the user performs
+  // a "device factory reset", or similar.
+  // Calling "forgetBluetoothKeys" in setup() just as an example.
+  // Forgetting Bluetooth keys prevents "paired" gamepads to reconnect.
+  // But might also fix some connection / re-connection issues.
+  BP32.forgetBluetoothKeys();
 }
 
 // This callback gets called any time a new gamepad is connected.

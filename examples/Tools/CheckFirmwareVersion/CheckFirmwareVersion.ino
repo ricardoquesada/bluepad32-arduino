@@ -30,10 +30,6 @@ void setup() {
   String latestFv;
   Serial.print("Firmware version installed: ");
   Serial.println(fv);
-
-  // Print required firmware version
-  Serial.print("Latest firmware version available : ");
-  Serial.println(BLUEPAD32_LATEST_FIRMWARE_VERSION);
 }
 
 void loop() {

@@ -1,4 +1,4 @@
-// Copyright 2021 - 2021, Ricardo Quesada, http://retro.moe
+// Copyright 2021 - 2022, Ricardo Quesada, http://retro.moe
 // SPDX-License-Identifier: Apache-2.0 or LGPL-2.1-or-later
 
 #include "Bluepad32.h"
@@ -10,8 +10,6 @@
 #include "utility/debug.h"
 #include "utility/spi_drv.h"
 #include "utility/wl_types.h"
-
-const char BLUEPAD32_LATEST_FIRMWARE_VERSION[] = "v2.2.1";
 
 Bluepad32::Bluepad32()
     : _prevConnectedGamepads(0), _gamepads(), _onConnect(), _onDisconnect() {}
