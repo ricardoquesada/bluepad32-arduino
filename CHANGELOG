@@ -1,3 +1,7 @@
+Bluepad32 0.9.4 - 2022.02.28
+
+* Update library properties, CHANGELOG
+
 Bluepad32 0.9.3 - 2022.02.27
 
 * Example includes call to forgetBluetoothKeys()
