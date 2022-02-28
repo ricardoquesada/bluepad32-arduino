@@ -1,3 +1,8 @@
+Bluepad32 0.9.3 - 2022.02.27
+
+* Example includes call to forgetBluetoothKeys()
+* Remove BLUEPAD_LATEST_FIRMWARE_VERSION since it was outdated
+
 Bluepad32 0.9.2 - 2022.01.07
 
 * Compiles Ok in Arduino UNO WiFi Rev.2
