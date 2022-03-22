@@ -1,17 +1,22 @@
-Bluepad32 0.9.4 - 2022.02.28
+Bluepad32 1.0.0 - 2022.03.21
+
+* Example: Supports multiple connected gamepads
+* SPI Driver: Correctly parses variable-length responses
+
+Bluepad32 0.99.4 - 2022.02.28
 
 * Update library properties, CHANGELOG
 
-Bluepad32 0.9.3 - 2022.02.27
+Bluepad32 0.99.3 - 2022.02.27
 
 * Example includes call to forgetBluetoothKeys()
 * Remove BLUEPAD_LATEST_FIRMWARE_VERSION since it was outdated
 
-Bluepad32 0.9.2 - 2022.01.07
+Bluepad32 0.99.2 - 2022.01.07
 
 * Compiles Ok in Arduino UNO WiFi Rev.2
 
-Bluepad32 0.9.0 - 2021.07.17
+Bluepad32 0.99.0 - 2021.07.17
 
 * Initial public release
 * Supports:
