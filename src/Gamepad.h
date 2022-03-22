@@ -92,8 +92,8 @@ class Gamepad {
   // Must match nina_gamepad_t defined here:
   // https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/src/main/uni_platform_nina.c
   struct State {
-    // Used to tell "master" who is the owner of this data. 4 gamepads can be
-    // connected, this value indicates which gamepad it is.
+    // Used to tell "controller" who is the owner of this data. 4 gamepads can
+    // be connected, this value indicates which gamepad it is.
     uint8_t idx;
 
     uint8_t dpad;

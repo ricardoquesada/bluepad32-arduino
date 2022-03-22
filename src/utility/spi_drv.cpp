@@ -398,11 +398,7 @@ int SpiDrv::waitResponse(uint8_t cmd, uint8_t* numParamRead, uint8_t** params,
                          uint8_t maxNumParams) {
   char _data = 0;
   int i = 0, ii = 0;
-
-  char* index[WL_SSID_MAX_LENGTH];
-
-  for (i = 0; i < WL_NETWORKS_LIST_MAXNUM; i++)
-    index[i] = (char*)params + WL_SSID_MAX_LENGTH * i;
+  uint8_t* data = (uint8_t*)params;
 
   IF_CHECK_START_CMD(_data) {
     CHECK_DATA(cmd | REPLY_FLAG, _data){};
@@ -417,11 +413,9 @@ int SpiDrv::waitResponse(uint8_t cmd, uint8_t* numParamRead, uint8_t** params,
       for (i = 0; i < numParam; ++i) {
         uint8_t paramLen = readParamLen8();
         for (ii = 0; ii < paramLen; ++ii) {
-          // ssid[ii] = spiTransfer(DUMMY_DATA);
           // Get Params data
-          index[i][ii] = (uint8_t)spiTransfer(DUMMY_DATA);
+          data[i * paramLen + ii] = spiTransfer(DUMMY_DATA);
         }
-        index[i][ii] = 0;
       }
     } else {
       WARN("Error numParams == 0");
