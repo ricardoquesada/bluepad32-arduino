@@ -7,6 +7,7 @@
 #include <inttypes.h>
 
 #include "Gamepad.h"
+#include "GamepadProperties.h"
 #include "constants.h"
 
 // Using C callbacks since AVR-GCC (needed for Arduino UNO WiFi) doesn't support
@@ -54,6 +55,11 @@ class Bluepad32 {
 
  private:
   void checkProtocol();
+
+  uint8_t _protocolVersionHi;
+  uint8_t _protocolVersionLow;
+
+  friend class Gamepad;
 };
 
 extern Bluepad32 BP32;

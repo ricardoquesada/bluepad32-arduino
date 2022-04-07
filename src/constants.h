@@ -11,16 +11,17 @@ enum {
   BP32_SET_GAMEPAD_COLOR_LED = 0x03,
   BP32_SET_GAMEPAD_RUMBLE = 0x04,
   BP32_FORGET_BLUETOOTH_KEYS = 0x05,
+  BP32_GET_GAMEPAD_PROPERTIES = 0x06,
 };
 
 // Possible answers when the request doesn't need an answer, like in "set_xxx"
 enum {
-  BP32_RESPONSE_OK = 0,
-  BP32_RESPONSE_ERROR = 1,
+  BP32_RESPONSE_ERROR = 0,
+  BP32_RESPONSE_OK = 1,
 };
 
 enum {
-  BP32_PROTOCOL_VERSION_LO = 0x00,
+  BP32_PROTOCOL_VERSION_LO = 0x01,
   BP32_PROTOCOL_VERSION_HI = 0x01,
 };
 

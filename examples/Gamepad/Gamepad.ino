@@ -53,6 +53,23 @@ void onConnectedGamepad(GamepadPtr gp) {
       Serial.println(i);
       myGamepads[i] = gp;
       foundEmptySlot = true;
+
+      // Optional, once the gamepad is connected, request further info about the
+      // gamepad.
+      GamepadProperties properties;
+      if (!gp->getProperties(&properties)) {
+        Serial.println("Failed to get gamepad properties");
+      } else {
+        char buf[80];
+        sprintf(buf,
+                "BTAddr: %02x:%02x:%02x:%02x:%02x:%02x, VID/PID: %04x:%04x, "
+                "flags: 0x%02x",
+                properties.btaddr[0], properties.btaddr[1],
+                properties.btaddr[2], properties.btaddr[3],
+                properties.btaddr[4], properties.btaddr[5],
+                properties.vendor_id, properties.product_id, properties.flags);
+        Serial.println(buf);
+      }
       break;
     }
   }

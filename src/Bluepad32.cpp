@@ -242,6 +242,8 @@ void Bluepad32::checkProtocol() {
     WARN("Invalid dataLen");
   }
   INFO("Protocol version: %d.%d", data[0], data[1]);
+  _protocolVersionHi = data[0];
+  _protocolVersionLow = data[1];
 }
 
 Bluepad32 BP32;

@@ -5,6 +5,7 @@
 
 #include <inttypes.h>
 
+#include "Bluepad32.h"
 #include "constants.h"
 #include "utility/debug.h"
 #include "utility/spi_drv.h"
@@ -116,4 +117,52 @@ void Gamepad::setRumble(uint8_t force, uint8_t duration) const {
     WARN("Failed to set rumble");
   }
   SpiDrv::spiSlaveDeselect();
+}
+
+bool Gamepad::getProperties(GamepadPropertiesPtr outProperties) const {
+  uint8_t errorCode;
+  struct GamepadProperties properties;
+  tParam params[] = {
+      {sizeof(errorCode), (char*)&errorCode},
+      {sizeof(properties), (char*)&properties},
+  };
+
+  if (!isConnected()) {
+    WARN("gamepad not connected");
+    return false;
+  }
+
+  // Requires protocol version 1.1 at least.
+  if (BP32._protocolVersionHi <= 1 && BP32._protocolVersionLow < 1) {
+    WARN("Requires protocol version 1.1. Upgrade ESP32 firmware");
+    return false;
+  }
+
+  WAIT_FOR_SLAVE_SELECT();
+  // Send Command
+  SpiDrv::sendCmd(BP32_GET_GAMEPAD_PROPERTIES, PARAM_NUMS_1);
+  SpiDrv::sendParam((uint8_t*)&_state.idx, 1, LAST_PARAM);
+
+  SpiDrv::spiSlaveDeselect();
+  // Wait the reply elaboration
+  SpiDrv::waitForSlaveReady();
+  SpiDrv::spiSlaveSelect();
+
+  // Wait for reply
+  uint8_t dataLen;
+  if (!SpiDrv::waitResponseParams(BP32_GET_GAMEPAD_PROPERTIES, PARAM_NUMS_2,
+                                  params)) {
+    WARN("error waitResponseParams");
+    return false;
+  }
+
+  SpiDrv::spiSlaveDeselect();
+
+  if (errorCode != BP32_RESPONSE_OK) {
+    WARN("Failed to get gamepad properties");
+    return false;
+  }
+  *outProperties = properties;
+
+  return true;
 }

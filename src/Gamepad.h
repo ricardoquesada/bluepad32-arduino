@@ -6,6 +6,8 @@
 
 #include <inttypes.h>
 
+#include "GamepadProperties.h"
+
 class Gamepad {
  public:
   // Types of controllers
@@ -90,7 +92,7 @@ class Gamepad {
   Gamepad();
 
   // Must match nina_gamepad_t defined here:
-  // https://gitlab.com/ricardoquesada/bluepad32/-/blob/master/src/main/uni_platform_nina.c
+  // https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/src/components/bluepad32/uni_platform_nina.c
   struct State {
     // Used to tell "controller" who is the owner of this data. 4 gamepads can
     // be connected, this value indicates which gamepad it is.
@@ -151,6 +153,8 @@ class Gamepad {
 
   // Returns the gamepad model.
   int getModel() const { return _state.type; }
+  // Returns gamepad properties. Available since protocol v1.1.
+  bool getProperties(GamepadPropertiesPtr outProperties) const;
 
   // "Output" functions.
   void setPlayerLEDs(uint8_t led) const;
