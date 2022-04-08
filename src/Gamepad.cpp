@@ -119,9 +119,11 @@ void Gamepad::setRumble(uint8_t force, uint8_t duration) const {
   SpiDrv::spiSlaveDeselect();
 }
 
-bool Gamepad::getProperties(GamepadPropertiesPtr outProperties) const {
+GamepadProperties Gamepad::getProperties() const {
+  // To make life easier for Arduino users, we return properties, even if there
+  // is a failure.
   uint8_t errorCode;
-  struct GamepadProperties properties;
+  GamepadProperties properties = {0};
   tParam params[] = {
       {sizeof(errorCode), (char*)&errorCode},
       {sizeof(properties), (char*)&properties},
@@ -129,13 +131,13 @@ bool Gamepad::getProperties(GamepadPropertiesPtr outProperties) const {
 
   if (!isConnected()) {
     WARN("gamepad not connected");
-    return false;
+    return properties;
   }
 
   // Requires protocol version 1.1 at least.
   if (BP32._protocolVersionHi <= 1 && BP32._protocolVersionLow < 1) {
     WARN("Requires protocol version 1.1. Upgrade ESP32 firmware");
-    return false;
+    return properties;
   }
 
   WAIT_FOR_SLAVE_SELECT();
@@ -153,16 +155,13 @@ bool Gamepad::getProperties(GamepadPropertiesPtr outProperties) const {
   if (!SpiDrv::waitResponseParams(BP32_GET_GAMEPAD_PROPERTIES, PARAM_NUMS_2,
                                   params)) {
     WARN("error waitResponseParams");
-    return false;
+    return properties;
   }
 
   SpiDrv::spiSlaveDeselect();
 
   if (errorCode != BP32_RESPONSE_OK) {
     WARN("Failed to get gamepad properties");
-    return false;
   }
-  *outProperties = properties;
-
-  return true;
+  return properties;
 }

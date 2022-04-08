@@ -154,7 +154,7 @@ class Gamepad {
   // Returns the gamepad model.
   int getModel() const { return _state.type; }
   // Returns gamepad properties. Available since protocol v1.1.
-  bool getProperties(GamepadPropertiesPtr outProperties) const;
+  GamepadProperties getProperties() const;
 
   // "Output" functions.
   void setPlayerLEDs(uint8_t led) const;
