@@ -169,5 +169,5 @@ void Gamepad::onConnected() {
 
 void Gamepad::onDisconnected() {
   _connected = false;
-  memset(&_properties, 0, sizeof(_properties));
+  _properties = {};
 }
