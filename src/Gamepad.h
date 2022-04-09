@@ -154,7 +154,7 @@ class Gamepad {
   // Returns the gamepad model.
   int getModel() const { return _state.type; }
   // Returns gamepad properties. Available since protocol v1.1.
-  GamepadProperties getProperties() const;
+  GamepadProperties getProperties() const { return _properties; }
 
   // "Output" functions.
   void setPlayerLEDs(uint8_t led) const;
@@ -162,8 +162,12 @@ class Gamepad {
   void setRumble(uint8_t force, uint8_t duration) const;
 
  private:
+  void onConnected();
+  void onDisconnected();
+
   bool _connected;
   State _state;
+  GamepadProperties _properties;
 
   // Delete copy constructor to avoid copying the state by mistake. If so,
   // chances are that the gamepad won't get updated automatically.

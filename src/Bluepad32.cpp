@@ -178,12 +178,12 @@ void Bluepad32::update() {
     if (current == prev) continue;
 
     if (current) {
-      _gamepads[i]._connected = true;
+      _gamepads[i].onConnected();
       _onConnect(&_gamepads[i]);
       INFO("gamepad connected: %d", i);
     } else {
       _onDisconnect(&_gamepads[i]);
-      _gamepads[i]._connected = false;
+      _gamepads[i].onDisconnected();
       INFO("gamepad disconnected: %d", i);
     }
   }

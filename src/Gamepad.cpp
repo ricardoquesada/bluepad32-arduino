@@ -11,7 +11,7 @@
 #include "utility/spi_drv.h"
 #include "utility/wl_types.h"
 
-Gamepad::Gamepad() : _connected(false), _state() {}
+Gamepad::Gamepad() : _connected(false), _state(), _properties() {}
 
 bool Gamepad::isConnected() const { return _connected; }
 
@@ -119,25 +119,25 @@ void Gamepad::setRumble(uint8_t force, uint8_t duration) const {
   SpiDrv::spiSlaveDeselect();
 }
 
-GamepadProperties Gamepad::getProperties() const {
-  // To make life easier for Arduino users, we return properties, even if there
-  // is a failure.
+// Private functions
+
+void Gamepad::onConnected() {
+  _connected = true;
+
+  // Properties are static, they don't change during the "life of the
+  // connection". Request them once, at connect time and cache the result.
+  // FIXME: _properties.idx contains the error code in case it fails.
   uint8_t errorCode;
-  GamepadProperties properties = {0};
   tParam params[] = {
       {sizeof(errorCode), (char*)&errorCode},
-      {sizeof(properties), (char*)&properties},
+      {sizeof(_properties), (char*)&_properties},
   };
-
-  if (!isConnected()) {
-    WARN("gamepad not connected");
-    return properties;
-  }
 
   // Requires protocol version 1.1 at least.
   if (BP32._protocolVersionHi <= 1 && BP32._protocolVersionLow < 1) {
     WARN("Requires protocol version 1.1. Upgrade ESP32 firmware");
-    return properties;
+    _properties.idx = -1;
+    return;
   }
 
   WAIT_FOR_SLAVE_SELECT();
@@ -155,13 +155,19 @@ GamepadProperties Gamepad::getProperties() const {
   if (!SpiDrv::waitResponseParams(BP32_GET_GAMEPAD_PROPERTIES, PARAM_NUMS_2,
                                   params)) {
     WARN("error waitResponseParams");
-    return properties;
+    _properties.idx = -2;
+    return;
   }
 
   SpiDrv::spiSlaveDeselect();
 
   if (errorCode != BP32_RESPONSE_OK) {
     WARN("Failed to get gamepad properties");
+    _properties.idx = -3;
   }
-  return properties;
+}
+
+void Gamepad::onDisconnected() {
+  _connected = false;
+  memset(&_properties, 0, sizeof(_properties));
 }
