@@ -1,3 +1,8 @@
+Bluepad32 1.1.0 - 2022.04.17
+
+* Add Gamepad.getProperties() function
+  Returns btaddress, vid/pid, and other useful properties
+
 Bluepad32 1.0.0 - 2022.03.21
 
 * Example: Supports multiple connected gamepads
