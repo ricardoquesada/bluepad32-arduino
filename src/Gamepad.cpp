@@ -151,7 +151,6 @@ void Gamepad::onConnected() {
   SpiDrv::spiSlaveSelect();
 
   // Wait for reply
-  uint8_t dataLen;
   if (!SpiDrv::waitResponseParams(BP32_GET_GAMEPAD_PROPERTIES, PARAM_NUMS_2,
                                   params)) {
     WARN("error waitResponseParams");

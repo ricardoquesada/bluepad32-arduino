@@ -155,8 +155,8 @@ void loop() {
       // Some gamepads also have DPAD, axis and more.
       char buffer[120];
       snprintf(buffer, sizeof(buffer) - 1,
-               "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4d, %4d, axis "
-               "R: %4d, %4d, brake: %4d, throttle: %4d, misc: 0x%02x",
+               "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4li, %4li, axis "
+               "R: %4li, %4li, brake: %4ld, throttle: %4li, misc: 0x%02x",
                i,                      // Gamepad Index
                myGamepad->dpad(),      // DPAD
                myGamepad->buttons(),   // bitmask of pressed buttons

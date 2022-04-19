@@ -1,3 +1,7 @@
+Bluepad32 1.1.1 - 2022.04.18
+
+* Fix compilation warnings
+
 Bluepad32 1.1.0 - 2022.04.17
 
 * Add Gamepad.getProperties() function
