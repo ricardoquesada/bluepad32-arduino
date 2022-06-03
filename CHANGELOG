@@ -1,3 +1,8 @@
+Bluepad32 1.1.2 - 2022.06.??
+
+* Add BP32.enableNewBluetoothConnections()
+  Requires Bluepad32 v3.5 or newer
+
 Bluepad32 1.1.1 - 2022.04.18
 
 * Fix compilation warnings

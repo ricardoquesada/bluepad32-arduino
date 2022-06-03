@@ -150,6 +150,12 @@ void loop() {
         myGamepad->setRumble(0xc0 /* force */, 0xc0 /* duration */);
       }
 
+      if (myGamepad->y()) {
+        // Disable new gamepad connections
+        Serial.println("Bluetooth new connections disabled");
+        BP32.enableNewBluetoothConnections(false);
+      }
+
       // Another way to query the buttons, is by calling buttons(), or
       // miscButtons() which return a bitmask.
       // Some gamepads also have DPAD, axis and more.

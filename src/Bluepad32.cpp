@@ -210,6 +210,32 @@ void Bluepad32::forgetBluetoothKeys() {
   SpiDrv::spiSlaveDeselect();
 }
 
+void Bluepad32::enableNewBluetoothConnections(bool enabled) {
+  WAIT_FOR_SLAVE_SELECT();
+  uint8_t en = enabled;
+
+  // Send Command
+  SpiDrv::sendCmd(BP32_ENABLE_BLUETOOTH_CONNECTIONS, PARAM_NUMS_1);
+
+  SpiDrv::sendParam(&en, 1, LAST_PARAM);
+
+  // pad to multiple of 4
+  SpiDrv::readChar();
+  SpiDrv::readChar();
+
+  SpiDrv::spiSlaveDeselect();
+  // Wait the reply elaboration
+  SpiDrv::waitForSlaveReady();
+  SpiDrv::spiSlaveSelect();
+
+  // Wait for reply
+  uint8_t data, dataLen;
+  SpiDrv::waitResponseCmd(BP32_ENABLE_BLUETOOTH_CONNECTIONS, PARAM_NUMS_1,
+                          &data, &dataLen);
+
+  SpiDrv::spiSlaveDeselect();
+}
+
 void Bluepad32::setup(const GamepadCallback& onConnect,
                       const GamepadCallback& onDisconnect) {
   _onConnect = onConnect;
