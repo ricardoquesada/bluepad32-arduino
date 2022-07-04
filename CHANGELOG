@@ -1,3 +1,7 @@
+Bluepad32 1.1.3 - 2022.07.04
+
+* Update description in BP32.enableNewBluetoothConnections();
+
 Bluepad32 1.1.2 - 2022.06.18
 
 * Add BP32.enableNewBluetoothConnections()
