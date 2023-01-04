@@ -162,7 +162,8 @@ class Gamepad {
   void setRumble(uint8_t force, uint8_t duration) const;
 
   // Disconnect itself.
-  // After calling this function, the gamepad will be disconnected from the host.
+  // After calling this function, the gamepad will be disconnected from the
+  // host.
   void disconnect();
 
  private:
