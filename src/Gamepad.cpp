@@ -11,7 +11,10 @@
 #include "utility/spi_drv.h"
 #include "utility/wl_types.h"
 
-Gamepad::Gamepad() : _connected(false), _state(), _properties() {}
+Gamepad::Gamepad() : _connected(false), _state(), _properties() {
+  _state.idx = -1;
+  _properties.idx = -1;
+}
 
 bool Gamepad::isConnected() const { return _connected; }
 
@@ -167,16 +170,22 @@ void Gamepad::onConnected() {
   };
 
   // Requires protocol version 1.1 at least.
-  if (BP32._protocolVersionHi <= 1 && BP32._protocolVersionLow < 1) {
-    WARN("Requires protocol version 1.1. Upgrade ESP32 firmware");
+  if (BP32._protocolVersionHi <= BP32_PROTOCOL_VERSION_HI &&
+      BP32._protocolVersionLow < BP32_PROTOCOL_VERSION_LO) {
+    WARN("Requires protocol version 1.3. Upgrade ESP32 firmware");
     _properties.idx = -1;
     return;
   }
 
+  INFO("Requesting properties for idx=%d", _state.idx);
   WAIT_FOR_SLAVE_SELECT();
   // Send Command
   SpiDrv::sendCmd(BP32_GET_GAMEPAD_PROPERTIES, PARAM_NUMS_1);
   SpiDrv::sendParam((uint8_t*)&_state.idx, 1, LAST_PARAM);
+
+  // pad to multiple of 4
+  SpiDrv::readChar();
+  SpiDrv::readChar();
 
   SpiDrv::spiSlaveDeselect();
   // Wait the reply elaboration
