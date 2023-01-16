@@ -4,14 +4,23 @@
 /*
  * This example shows how to use the Gamepad API.
  *
- * Supported on boards with NINA W10x like:
+ * Supported on boards with NINA W10x. In particular these boards:
  *  - Arduino MKR WiFi 1010,
  *  - UNO WiFi Rev.2,
  *  - Nano RP2040 Connect,
  *  - Nano 33 IoT,
- *  - etc.
+ *  - Arduino Arduino MKR Vidor 4000
  */
 #include <Bluepad32.h>
+
+//
+// README FIRST
+//
+// This example uses the old (but still supported) API.
+// Do not use it for newer projects.
+// 
+// Instead use the new "Controller" API.
+//
 
 GamepadPtr myGamepads[BP32_MAX_GAMEPADS] = {};
 

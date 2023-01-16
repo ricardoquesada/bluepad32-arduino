@@ -9,13 +9,13 @@ image::https://img.shields.io/discord/775177861665521725.svg[link=https://discor
 
 image::img/bluepad32-arduino-logo.png[logo]
 
-Enables gamepad support for NINA-based boards, like:
+Enables gamepad support for all NINA-based boards. In particular these boards:
 
 * https://store.arduino.cc/usa/nano-rp2040-connect-with-headers[Arduino Nano RP2040 Connect]
 * https://store.arduino.cc/usa/nano-33-iot[Arduino Nano 33 IoT]
 * https://store.arduino.cc/usa/mkr-wifi-1010[Arduino MKR WiFi 1010]
 * http://store.arduino.cc/products/arduino-uno-wifi-rev2[Arduino UNO WiFi Rev2]
-* etc.
+* https://store.arduino.cc/products/arduino-mkr-vidor-4000[Arduino Arduino MKR Vidor 4000]
 
 If you are looking for Arduino running on ESP32 boards, check out this other project:
 

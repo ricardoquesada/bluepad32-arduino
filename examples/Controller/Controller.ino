@@ -2,14 +2,14 @@
 // SPDX-License-Identifier: Apache 2.0 or LGPL-2.1-or-later
 
 /*
- * This example shows how to use the Gamepad API.
+ * This example shows how to use the Controller API.
  *
- * Supported on boards with NINA W10x like:
+ * Supported on boards with NINA W10x. In particular these boards:
  *  - Arduino MKR WiFi 1010,
  *  - UNO WiFi Rev.2,
  *  - Nano RP2040 Connect,
  *  - Nano 33 IoT,
- *  - etc.
+ *  - Arduino Arduino MKR Vidor 4000
  */
 #include <Bluepad32.h>
 
@@ -34,7 +34,7 @@ void setup() {
   // BP32.digitalWrite(27, 0);
 
   // This call is mandatory. It setups Bluepad32 and creates the callbacks.
-  BP32.setup(&onConnectedGamepad, &onDisconnectedGamepad);
+  BP32.setup(&onConnectedController, &onDisconnectedController);
 
   // "forgetBluetoothKeys()" should be called when the user performs
   // a "device factory reset", or similar.
@@ -46,11 +46,11 @@ void setup() {
 
 // This callback gets called any time a new gamepad is connected.
 // Up to 4 gamepads can be connected at the same time.
-void onConnectedGamepad(ControllerPtr ctl) {
+void onConnectedController(ControllerPtr ctl) {
   bool foundEmptySlot = false;
   for (int i = 0; i < BP32_MAX_GAMEPADS; i++) {
     if (myControllers[i] == nullptr) {
-      Serial.print("CALLBACK: Gamepad is connected, index=");
+      Serial.print("CALLBACK: Controller is connected, index=");
       Serial.println(i);
       myControllers[i] = ctl;
       foundEmptySlot = true;
@@ -71,16 +71,16 @@ void onConnectedGamepad(ControllerPtr ctl) {
   }
   if (!foundEmptySlot) {
     Serial.println(
-        "CALLBACK: Gamepad connected, but could not found empty slot");
+        "CALLBACK: Controller connected, but could not found empty slot");
   }
 }
 
-void onDisconnectedGamepad(ControllerPtr ctl) {
+void onDisconnectedController(ControllerPtr ctl) {
   bool foundGamepad = false;
 
   for (int i = 0; i < BP32_MAX_GAMEPADS; i++) {
     if (myControllers[i] == ctl) {
-      Serial.print("CALLBACK: Gamepad is disconnected from index=");
+      Serial.print("CALLBACK: Controller is disconnected from index=");
       Serial.println(i);
       myControllers[i] = nullptr;
       foundGamepad = true;
@@ -90,7 +90,7 @@ void onDisconnectedGamepad(ControllerPtr ctl) {
 
   if (!foundGamepad) {
     Serial.println(
-        "CALLBACK: Gamepad disconnected, but not found in myControllers");
+        "CALLBACK: Controller disconnected, but not found in myControllers");
   }
 }
 
