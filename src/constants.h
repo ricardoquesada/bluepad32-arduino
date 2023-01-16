@@ -14,6 +14,7 @@ enum {
   BP32_GET_GAMEPAD_PROPERTIES = 0x06,
   BP32_ENABLE_BLUETOOTH_CONNECTIONS = 0x07,
   BP32_DISCONNECT_GAMEPAD = 0x08,
+  BP32_GET_CONTROLLERS_DATA = 0x09,
 };
 
 // Possible answers when the request doesn't need an answer, like in "set_xxx"
@@ -24,9 +25,10 @@ enum {
 
 enum {
   BP32_PROTOCOL_VERSION_HI = 0x01,
-  BP32_PROTOCOL_VERSION_LO = 0x02,
+  BP32_PROTOCOL_VERSION_LO = 0x03,
 };
 
-#define BP32_MAX_GAMEPADS 4
+#define BP32_MAX_CONTROLLERS 4
+#define BP32_MAX_GAMEPADS BP32_MAX_CONTROLLERS
 
 #endif  // BP32_CONSTANTS_H

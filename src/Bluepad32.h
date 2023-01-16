@@ -6,24 +6,28 @@
 
 #include <inttypes.h>
 
+#include "Controller.h"
+#include "ControllerData.h"
+#include "ControllerProperties.h"
 #include "Gamepad.h"
 #include "GamepadProperties.h"
 #include "constants.h"
 
 // Using C callbacks since AVR-GCC (needed for Arduino UNO WiFi) doesn't support
 // STL
-typedef void (*GamepadCallback)(GamepadPtr gamepad);
+typedef void (*ControllerCallback)(ControllerPtr controller);
+using GamepadCallback = ControllerCallback;
 
 class Bluepad32 {
   // This is what the user receives
-  Gamepad _gamepads[BP32_MAX_GAMEPADS];
+  Controller _controllers[BP32_MAX_CONTROLLERS];
 
-  // This is used internally by SPI, and then copied into the Gamepad::State of
-  // each gamepad
-  int _prevConnectedGamepads;
+  // This is used internally by SPI, and then copied into the Controller::State of
+  // each controller
+  int _prevConnectedControllers;
 
-  GamepadCallback _onConnect;
-  GamepadCallback _onDisconnect;
+  ControllerCallback _onConnect;
+  ControllerCallback _onDisconnect;
 
  public:
   Bluepad32();
@@ -41,10 +45,10 @@ class Bluepad32 {
   int digitalRead(uint8_t pin);
   void digitalWrite(uint8_t pin, uint8_t value);
 
-  // Gamepad
+  // Controller
   void update();
 
-  // When a gamepad connects to the ESP32, the ESP32 stores keys to make it
+  // When a controller connects to the ESP32, the ESP32 stores keys to make it
   // easier the reconnection.
   // If you want to "forget" (delete) the keys from ESP32, you should call this
   // function.
@@ -56,8 +60,8 @@ class Bluepad32 {
   // Established connections are not affected.
   void enableNewBluetoothConnections(bool enabled);
 
-  void setup(const GamepadCallback& onConnect,
-             const GamepadCallback& onDisconnect);
+  void setup(const ControllerCallback& onConnect,
+             const ControllerCallback& onDisconnect);
 
  private:
   void checkProtocol();
@@ -65,7 +69,7 @@ class Bluepad32 {
   uint8_t _protocolVersionHi;
   uint8_t _protocolVersionLow;
 
-  friend class Gamepad;
+  friend class Controller;
 };
 
 extern Bluepad32 BP32;

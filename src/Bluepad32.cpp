@@ -12,7 +12,7 @@
 #include "utility/wl_types.h"
 
 Bluepad32::Bluepad32()
-    : _gamepads(), _prevConnectedGamepads(0), _onConnect(), _onDisconnect() {}
+    : _controllers(), _prevConnectedControllers(0), _onConnect(), _onDisconnect() {}
 
 const char* Bluepad32::firmwareVersion() {
   // Max size of fwversion. Might not be possible to have an overflow since the
@@ -138,7 +138,8 @@ void Bluepad32::digitalWrite(uint8_t pin, uint8_t value) {
 void Bluepad32::update() {
   WAIT_FOR_SLAVE_SELECT();
   // Send Command
-  SpiDrv::sendCmd(BP32_GET_GAMEPADS_DATA, PARAM_NUMS_0);
+  // SpiDrv::sendCmd(BP32_GET_GAMEPADS_DATA, PARAM_NUMS_0);
+  SpiDrv::sendCmd(BP32_GET_CONTROLLERS_DATA, PARAM_NUMS_0);
 
   SpiDrv::spiSlaveDeselect();
   // Wait the reply elaboration
@@ -148,47 +149,47 @@ void Bluepad32::update() {
   // Wait for reply
   uint8_t totalParams;
 
-  Gamepad::State currentState[BP32_MAX_GAMEPADS];
+  ControllerData currentData[BP32_MAX_CONTROLLERS];
 
-  SpiDrv::waitResponse(BP32_GET_GAMEPADS_DATA, &totalParams,
-                       (uint8_t**)currentState, BP32_MAX_GAMEPADS);
+  SpiDrv::waitResponse(BP32_GET_CONTROLLERS_DATA, &totalParams,
+                       (uint8_t**)currentData, BP32_MAX_CONTROLLERS);
 
   SpiDrv::spiSlaveDeselect();
 
-  int connectedGamepads = 0;
+  int connectedControllers = 0;
   for (int i = 0; i < totalParams; i++) {
-    connectedGamepads |= (1 << currentState[i].idx);
+    connectedControllers |= (1 << currentData[i].idx);
 
-    // Update gamepads state
-    _gamepads[currentState[i].idx]._state = currentState[i];
+    // Update controllers state
+    _controllers[currentData[i].idx]._data = currentData[i];
   }
 
-  // No changes in connected gamepads. No need to call onConnected or
+  // No changes in connected controllers. No need to call onConnected or
   // onDisconnected.
-  if (connectedGamepads == _prevConnectedGamepads) return;
+  if (connectedControllers == _prevConnectedControllers) return;
 
   // Compare bit by bit, and find which one got connected and which one
   // disconnected.
-  for (int i = 0; i < BP32_MAX_GAMEPADS; i++) {
+  for (int i = 0; i < BP32_MAX_CONTROLLERS; i++) {
     int bit = (1 << i);
-    int current = connectedGamepads & bit;
-    int prev = _prevConnectedGamepads & bit;
+    int current = connectedControllers & bit;
+    int prev = _prevConnectedControllers & bit;
 
-    // No changes in this gamepad, skip
+    // No changes in this controller, skip
     if (current == prev) continue;
 
     if (current) {
-      _gamepads[i].onConnected();
-      _onConnect(&_gamepads[i]);
-      INFO("gamepad connected: %d", i);
+      _controllers[i].onConnected();
+      _onConnect(&_controllers[i]);
+      INFO("controller connected: %d", i);
     } else {
-      _onDisconnect(&_gamepads[i]);
-      _gamepads[i].onDisconnected();
-      INFO("gamepad disconnected: %d", i);
+      _onDisconnect(&_controllers[i]);
+      _controllers[i].onDisconnected();
+      INFO("controller disconnected: %d", i);
     }
   }
 
-  _prevConnectedGamepads = connectedGamepads;
+  _prevConnectedControllers = connectedControllers;
 }
 
 void Bluepad32::forgetBluetoothKeys() {
@@ -236,8 +237,8 @@ void Bluepad32::enableNewBluetoothConnections(bool enabled) {
   SpiDrv::spiSlaveDeselect();
 }
 
-void Bluepad32::setup(const GamepadCallback& onConnect,
-                      const GamepadCallback& onDisconnect) {
+void Bluepad32::setup(const ControllerCallback& onConnect,
+                      const ControllerCallback& onDisconnect) {
   _onConnect = onConnect;
   _onDisconnect = onDisconnect;
 

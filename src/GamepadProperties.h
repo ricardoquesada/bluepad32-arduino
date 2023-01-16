@@ -4,31 +4,24 @@
 #ifndef BP32_GAMEPAD_PROPERTIES_H
 #define BP32_GAMEPAD_PROPERTIES_H
 
-#include <inttypes.h>
+//
+// Deprecated. Use ControllerProperties.h instead
+//
 
-// Must match nina_gamepad_properties_t defined here:
-// https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/src/components/bluepad32/uni_platform_nina.c
+#include "ControllerProperties.h"
 
 enum {
-  GAMEPAD_PROPERTY_FLAG_RUMBLE = 1UL << 0,
-  GAMEPAD_PROPERTY_FLAG_PLAYER_LEDS = 1UL << 1,
-  GAMEPAD_PROPERTY_FLAG_PLAYER_LIGHTBAR = 1UL << 2,
+  GAMEPAD_PROPERTY_FLAG_RUMBLE = CONTROLLER_PROPERTY_FLAG_RUMBLE,
+  GAMEPAD_PROPERTY_FLAG_PLAYER_LEDS = CONTROLLER_PROPERTY_FLAG_PLAYER_LEDS,
+  GAMEPAD_PROPERTY_FLAG_PLAYER_LIGHTBAR = CONTROLLER_PROPERTY_FLAG_PLAYER_LIGHTBAR,
 
-  GAMEPAD_PROPERTY_FLAG_GAMEPAD = 1UL << 13,
-  GAMEPAD_PROPERTY_FLAG_MOUSE = 1UL << 14,
-  GAMEPAD_PROPERTY_FLAG_KEYBOARD = 1UL << 15,
+  GAMEPAD_PROPERTY_FLAG_GAMEPAD = CONTROLLER_PROPERTY_FLAG_GAMEPAD,
+  GAMEPAD_PROPERTY_FLAG_MOUSE = CONTROLLER_PROPERTY_FLAG_MOUSE,
+  GAMEPAD_PROPERTY_FLAG_KEYBOARD = CONTROLLER_PROPERTY_FLAG_KEYBOARD,
 };
 
-struct GamepadProperties {
-  uint8_t idx;          // Device index
-  uint8_t btaddr[6];    // BT Addr
-  uint8_t type;         // model: copy from nina_gamepad_t
-  uint8_t subtype;      // subtype. E.g: Wii Remote 2nd version
-  uint16_t vendor_id;   // VID
-  uint16_t product_id;  // PID
-  uint16_t flags;       // Features like Rumble, LEDs, etc.
-} __attribute__((packed));
+using GamepadProperties = ControllerProperties;
+using GamepadPropertiesPtr = ControllerPropertiesPtr;
 
-typedef GamepadProperties* GamepadPropertiesPtr;
 
 #endif  // BP32_GAMEPAD_PROPERTIES_H
