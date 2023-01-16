@@ -1,6 +1,8 @@
-Bluepad32 1.2.0 - 2023.01.XX
+Bluepad32 1.2.0 - 2023.01.16
 
-* XXX
+* New Controller API that supports gamepads, mice and balance boards
+* Battery status is supported
+* Requires Bluepad32 Firmware v3.6.0-rc0 or newer
 
 Bluepad32 1.1.5 - 2023.01.03
 
