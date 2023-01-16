@@ -22,8 +22,8 @@ class Bluepad32 {
   // This is what the user receives
   Controller _controllers[BP32_MAX_CONTROLLERS];
 
-  // This is used internally by SPI, and then copied into the Controller::State of
-  // each controller
+  // This is used internally by SPI, and then copied into the Controller::State
+  // of each controller
   int _prevConnectedControllers;
 
   ControllerCallback _onConnect;

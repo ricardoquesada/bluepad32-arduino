@@ -12,7 +12,10 @@
 #include "utility/wl_types.h"
 
 Bluepad32::Bluepad32()
-    : _controllers(), _prevConnectedControllers(0), _onConnect(), _onDisconnect() {}
+    : _controllers(),
+      _prevConnectedControllers(0),
+      _onConnect(),
+      _onDisconnect() {}
 
 const char* Bluepad32::firmwareVersion() {
   // Max size of fwversion. Might not be possible to have an overflow since the

@@ -1,10 +1,11 @@
 // Copyright 2021 - 2021, Ricardo Quesada, http://retro.moe
 // SPDX-License-Identifier: Apache-2.0 or LGPL-2.1-or-later
 
+#include "Controller.h"
+
 #include <inttypes.h>
 
 #include "Bluepad32.h"
-#include "Controller.h"
 #include "constants.h"
 #include "utility/debug.h"
 #include "utility/spi_drv.h"

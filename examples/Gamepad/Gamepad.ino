@@ -163,19 +163,20 @@ void loop() {
       // miscButtons() which return a bitmask.
       // Some gamepads also have DPAD, axis and more.
       char buffer[120];
-      snprintf(buffer, sizeof(buffer) - 1,
-               "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4li, %4li, axis "
-               "R: %4li, %4li, brake: %4ld, throttle: %4li, misc: 0x%02x",
-               i,                      // Gamepad Index
-               myGamepad->dpad(),      // DPAD
-               myGamepad->buttons(),   // bitmask of pressed buttons
-               myGamepad->axisX(),     // (-511 - 512) left X Axis
-               myGamepad->axisY(),     // (-511 - 512) left Y axis
-               myGamepad->axisRX(),    // (-511 - 512) right X axis
-               myGamepad->axisRY(),    // (-511 - 512) right Y axis
-               myGamepad->brake(),     // (0 - 1023): brake button
-               myGamepad->throttle(),  // (0 - 1023): throttle (AKA gas) button
-               myGamepad->miscButtons()  // bitmak of pressed "misc" buttons
+      snprintf(
+          buffer, sizeof(buffer) - 1,
+          "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4li, %4li, axis "
+          "R: %4li, %4li, brake: %4ld, throttle: %4li, misc: 0x%02x",
+          i,                        // Gamepad Index
+          myGamepad->dpad(),        // DPAD
+          myGamepad->buttons(),     // bitmask of pressed buttons
+          myGamepad->axisX(),       // (-511 - 512) left X Axis
+          myGamepad->axisY(),       // (-511 - 512) left Y axis
+          myGamepad->axisRX(),      // (-511 - 512) right X axis
+          myGamepad->axisRY(),      // (-511 - 512) right Y axis
+          myGamepad->brake(),       // (0 - 1023): brake button
+          myGamepad->throttle(),    // (0 - 1023): throttle (AKA gas) button
+          myGamepad->miscButtons()  // bitmak of pressed "misc" buttons
       );
       Serial.println(buffer);
 
