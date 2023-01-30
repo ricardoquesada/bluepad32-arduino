@@ -41,6 +41,7 @@ typedef struct __attribute__((packed)) {
   int32_t delta_y;
   uint8_t buttons;
   uint8_t misc_buttons;
+  int8_t scroll_wheel;
 } nina_mouse_t;
 
 typedef struct __attribute__((packed)) {

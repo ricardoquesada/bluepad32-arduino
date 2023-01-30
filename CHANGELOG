@@ -1,3 +1,8 @@
+Bluepad32 1.2.1 - 2023.01.29
+
+* Scroll Wheel support for Mouse
+* Requires Bluepad32 Firmware v3.6.0-rc1 or newer
+
 Bluepad32 1.2.0 - 2023.01.16
 
 * New Controller API that supports gamepads, mice and balance boards
