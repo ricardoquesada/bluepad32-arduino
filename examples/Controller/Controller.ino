@@ -170,12 +170,13 @@ void processMouse(ControllerPtr mouse) {
   char buf[160];
   sprintf(buf,
           "idx=%d, deltaX:%4li, deltaY:%4li, buttons: 0x%04x, misc: 0x%02x, "
-          "battery=%d",
+          "scrollWheel: %d, battery=%d",
           mouse->index(),        // Controller Index
           mouse->deltaX(),       // Mouse delta X
           mouse->deltaY(),       // Mouse delta Y
           mouse->buttons(),      // bitmask of pressed buttons
           mouse->miscButtons(),  // bitmak of pressed "misc" buttons
+          mouse->scrollWheel(),  // Direction: 1=up, -1=down, 0=no movement
           mouse->battery()       // 0=Unk, 1=Empty, 255=full
   );
   Serial.println(buf);
