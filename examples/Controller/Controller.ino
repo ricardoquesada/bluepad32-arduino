@@ -30,6 +30,17 @@ void setup() {
   Serial.print("Firmware version installed: ");
   Serial.println(fv);
 
+  // To get the BD Address (MAC address) call:
+  const uint8_t* addr = BP32.localBdAddress();
+  Serial.print("BD Address: ");
+  for (int i=0;i<6;i++) {
+    Serial.print(addr[i], HEX);
+    if (i<5)
+      Serial.print(":");
+    else
+      Serial.println();
+  }
+
   // BP32.pinMode(27, OUTPUT);
   // BP32.digitalWrite(27, 0);
 

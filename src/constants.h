@@ -5,6 +5,7 @@
 #define BP32_CONSTANTS_H
 
 enum {
+  // Bluepad32 specific commands.
   BP32_GET_PROTOCOL_VERSION = 0x00,
   BP32_GET_GAMEPADS_DATA = 0x01,
   BP32_SET_GAMEPAD_PLAYERS_LED = 0x02,
@@ -15,6 +16,8 @@ enum {
   BP32_ENABLE_BLUETOOTH_CONNECTIONS = 0x07,
   BP32_DISCONNECT_GAMEPAD = 0x08,
   BP32_GET_CONTROLLERS_DATA = 0x09,
+
+  // From 0x10-0x7f are defined in wifi_spi.h
 };
 
 // Possible answers when the request doesn't need an answer, like in "set_xxx"

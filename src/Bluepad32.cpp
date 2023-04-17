@@ -276,4 +276,33 @@ void Bluepad32::checkProtocol() {
   _protocolVersionLow = data[1];
 }
 
+const uint8_t* Bluepad32::localBdAddress() {
+  static uint8_t bdaddr[6];
+  uint8_t dataLen = 0;
+ 
+  WAIT_FOR_SLAVE_SELECT();
+
+  // Send Command
+  SpiDrv::sendCmd(GET_MACADDR_CMD, PARAM_NUMS_1);
+
+  uint8_t _dummy = DUMMY_DATA;
+  SpiDrv::sendParam(&_dummy, 1, LAST_PARAM);
+
+  // pad to multiple of 4
+  SpiDrv::readChar();
+  SpiDrv::readChar();
+
+  SpiDrv::spiSlaveDeselect();
+  // Wait the reply elaboration
+  SpiDrv::waitForSlaveReady();
+  SpiDrv::spiSlaveSelect();
+
+  // Wait for reply
+  SpiDrv::waitResponseCmd(GET_MACADDR_CMD, PARAM_NUMS_1, bdaddr, &dataLen);
+
+  SpiDrv::spiSlaveDeselect();
+
+  return bdaddr;
+}
+
 Bluepad32 BP32;

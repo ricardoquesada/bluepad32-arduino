@@ -1,3 +1,8 @@
+Bluepad32 1.2.2 - 2023.04.16
+
+* Add "BP32.localBdAddress". Returns BD Address
+* Requires Bluepad32 Firmware v3.7.0-rc1 or newer
+
 Bluepad32 1.2.1 - 2023.01.29
 
 * Scroll Wheel support for Mouse

@@ -19,7 +19,7 @@ Enables gamepad support for all NINA-based boards. In particular these boards:
 
 If you are looking for Arduino running on ESP32 boards, check out this other project:
 
-* https://gitlab.com/ricardoquesada/esp-idf-arduino-bluepad32-template[Arduino + Bluepad32 on ESP32 boards]
+* https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/plat_arduino.md[Arduino + Bluepad32 on ESP32 boards]
 
 == Supported gamepads ==
 
@@ -32,7 +32,8 @@ With this library you can use any modern Bluetooth gamepad in Arduino. Some of t
 * Xbox Wireless controller (model 1708)
 * 8BitDo gamepads
 * Android gamepads
-* Window gamepads
+* Stadia controller
+* Windows gamepads
 * and more
 
 For a complete list, see: https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/supported_gamepads.md

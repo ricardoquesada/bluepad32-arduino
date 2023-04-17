@@ -60,6 +60,12 @@ class Bluepad32 {
   // Established connections are not affected.
   void enableNewBluetoothConnections(bool enabled);
 
+  //
+  // Get the local Bluetooth Address.
+  // return: pointer to uint8_t array with length 6.
+  //
+  const uint8_t* localBdAddress();
+
   void setup(const ControllerCallback& onConnect,
              const ControllerCallback& onDisconnect);
 
