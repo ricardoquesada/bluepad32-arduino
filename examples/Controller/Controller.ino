@@ -33,9 +33,9 @@ void setup() {
   // To get the BD Address (MAC address) call:
   const uint8_t* addr = BP32.localBdAddress();
   Serial.print("BD Address: ");
-  for (int i=0;i<6;i++) {
+  for (int i = 0; i < 6; i++) {
     Serial.print(addr[i], HEX);
-    if (i<5)
+    if (i < 5)
       Serial.print(":");
     else
       Serial.println();
@@ -154,22 +154,30 @@ void processGamepad(ControllerPtr gamepad) {
   // Another way to query the buttons, is by calling buttons(), or
   // miscButtons() which return a bitmask.
   // Some gamepads also have DPAD, axis and more.
-  char buf[160];
-  snprintf(
-      buf, sizeof(buf) - 1,
-      "idx=%d, dpad: 0x%02x, buttons: 0x%04x, axis L: %4li, %4li, axis "
-      "R: %4li, %4li, brake: %4ld, throttle: %4li, misc: 0x%02x, battery: %d",
-      gamepad->index(),        // Gamepad Index
-      gamepad->dpad(),         // DPAD
-      gamepad->buttons(),      // bitmask of pressed buttons
-      gamepad->axisX(),        // (-511 - 512) left X Axis
-      gamepad->axisY(),        // (-511 - 512) left Y axis
-      gamepad->axisRX(),       // (-511 - 512) right X axis
-      gamepad->axisRY(),       // (-511 - 512) right Y axis
-      gamepad->brake(),        // (0 - 1023): brake button
-      gamepad->throttle(),     // (0 - 1023): throttle (AKA gas) button
-      gamepad->miscButtons(),  // bitmak of pressed "misc" buttons
-      gamepad->battery()       // 0=Unknown, 1=empty, 255=full
+  char buf[256];
+  snprintf(buf, sizeof(buf) - 1,
+           "idx=%d, dpad: 0x%02x, buttons: 0x%04x, "
+           "axis L: %4li, %4li, axis R: %4li, %4li, "
+           "brake: %4ld, throttle: %4li, misc: 0x%02x, "
+           "gyro x:%6d y:%6d z:%6d, accel x:%6d y:%6d z:%6d, "
+           "battery: %d",
+           gamepad->index(),        // Gamepad Index
+           gamepad->dpad(),         // DPAD
+           gamepad->buttons(),      // bitmask of pressed buttons
+           gamepad->axisX(),        // (-511 - 512) left X Axis
+           gamepad->axisY(),        // (-511 - 512) left Y axis
+           gamepad->axisRX(),       // (-511 - 512) right X axis
+           gamepad->axisRY(),       // (-511 - 512) right Y axis
+           gamepad->brake(),        // (0 - 1023): brake button
+           gamepad->throttle(),     // (0 - 1023): throttle (AKA gas) button
+           gamepad->miscButtons(),  // bitmak of pressed "misc" buttons
+           gamepad->gyroX(),      // Gyro X
+           gamepad->gyroY(),      // Gyro Y
+           gamepad->gyroZ(),      // Gyro Z
+           gamepad->accelX(),     // Accelerometer X
+           gamepad->accelY(),     // Accelerometer Y
+           gamepad->accelZ(),     // Accelerometer Z
+           gamepad->battery()       // 0=Unknown, 1=empty, 255=full
   );
   Serial.println(buf);
 

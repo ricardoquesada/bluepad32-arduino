@@ -34,6 +34,9 @@ typedef struct __attribute__((packed)) {
 
   // Misc buttons (from 0x0c (Consumer) and others)
   uint8_t misc_buttons;
+
+  int32_t gyro[3];
+  int32_t accel[3];
 } nina_gamepad_t;
 
 typedef struct __attribute__((packed)) {

@@ -1,4 +1,8 @@
-Bluepad32 1.2.2 - 2023.04.16
+Bluepad32 1.3.1 - 2023.04.30
+* Add API to read Gyro/Accel
+* Update example to show how to do it
+
+Bluepad32 1.3.0 - 2023.04.16
 
 * Add "BP32.localBdAddress". Returns BD Address
 * Requires Bluepad32 Firmware v3.7.0-rc1 or newer
