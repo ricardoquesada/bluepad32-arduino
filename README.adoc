@@ -3,7 +3,7 @@
 :repository-name: bluepad32-arduino
 :project-name: Bluepad32
 
-= {project-name} library for Arduino =
+= {project-name} library for Arduino NINA =
 
 image::https://img.shields.io/discord/775177861665521725.svg[link=https://discord.gg/r5aMn6Cw5q]
 
@@ -29,7 +29,7 @@ With this library you can use any modern Bluetooth gamepad in Arduino. Some of t
 
 * Sony family: DualSense (PS5), DualShock 4 (PS4), DualShock 3 (PS3)
 * Nintendo family: Switch gamepads, Switch JoyCons, Wii, Wii U
-* Xbox Wireless controller (model 1708)
+* Xbox Wireless controller
 * 8BitDo gamepads
 * Android gamepads
 * Stadia controller
