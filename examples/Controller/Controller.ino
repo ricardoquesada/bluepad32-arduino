@@ -4,12 +4,12 @@
 /*
  * This example shows how to use the Controller API.
  *
- * Supported on boards with NINA W10x. In particular these boards:
+ * Supported on boards with NINA W10x. In particular, these boards:
  *  - Arduino MKR WiFi 1010,
  *  - UNO WiFi Rev.2,
  *  - Nano RP2040 Connect,
  *  - Nano 33 IoT,
- *  - Arduino Arduino MKR Vidor 4000
+ *  - Arduino MKR Vidor 4000
  */
 #include <Bluepad32.h>
 
@@ -20,7 +20,7 @@ void setup() {
   // Initialize serial
   Serial.begin(9600);
   while (!Serial) {
-    // wait for serial port to connect.
+    // Wait for serial port to connect.
     // You don't have to do this in your game. This is only for debugging
     // purposes, so that you can see the output in the serial console.
     ;
@@ -44,14 +44,14 @@ void setup() {
   // BP32.pinMode(27, OUTPUT);
   // BP32.digitalWrite(27, 0);
 
-  // This call is mandatory. It setups Bluepad32 and creates the callbacks.
+  // This call is mandatory. It sets up Bluepad32 and creates the callbacks.
   BP32.setup(&onConnectedController, &onDisconnectedController);
 
   // "forgetBluetoothKeys()" should be called when the user performs
   // a "device factory reset", or similar.
   // Calling "forgetBluetoothKeys" in setup() just as an example.
   // Forgetting Bluetooth keys prevents "paired" gamepads to reconnect.
-  // But might also fix some connection / re-connection issues.
+  // But it might also fix some connection / re-connection issues.
   BP32.forgetBluetoothKeys();
 }
 
@@ -162,7 +162,7 @@ void processGamepad(ControllerPtr gamepad) {
            "gyro x:%6d y:%6d z:%6d, accel x:%6d y:%6d z:%6d, "
            "battery: %d",
            gamepad->index(),        // Gamepad Index
-           gamepad->dpad(),         // DPAD
+           gamepad->dpad(),         // DPad
            gamepad->buttons(),      // bitmask of pressed buttons
            gamepad->axisX(),        // (-511 - 512) left X Axis
            gamepad->axisY(),        // (-511 - 512) left Y axis
@@ -170,13 +170,13 @@ void processGamepad(ControllerPtr gamepad) {
            gamepad->axisRY(),       // (-511 - 512) right Y axis
            gamepad->brake(),        // (0 - 1023): brake button
            gamepad->throttle(),     // (0 - 1023): throttle (AKA gas) button
-           gamepad->miscButtons(),  // bitmak of pressed "misc" buttons
-           gamepad->gyroX(),      // Gyro X
-           gamepad->gyroY(),      // Gyro Y
-           gamepad->gyroZ(),      // Gyro Z
-           gamepad->accelX(),     // Accelerometer X
-           gamepad->accelY(),     // Accelerometer Y
-           gamepad->accelZ(),     // Accelerometer Z
+           gamepad->miscButtons(),  // bitmask of pressed "misc" buttons
+           gamepad->gyroX(),        // Gyro X
+           gamepad->gyroY(),        // Gyro Y
+           gamepad->gyroZ(),        // Gyro Z
+           gamepad->accelX(),       // Accelerometer X
+           gamepad->accelY(),       // Accelerometer Y
+           gamepad->accelZ(),       // Accelerometer Z
            gamepad->battery()       // 0=Unknown, 1=empty, 255=full
   );
   Serial.println(buf);
@@ -194,7 +194,7 @@ void processMouse(ControllerPtr mouse) {
           mouse->deltaX(),       // Mouse delta X
           mouse->deltaY(),       // Mouse delta Y
           mouse->buttons(),      // bitmask of pressed buttons
-          mouse->miscButtons(),  // bitmak of pressed "misc" buttons
+          mouse->miscButtons(),  // bitmask of pressed "misc" buttons
           mouse->scrollWheel(),  // Direction: 1=up, -1=down, 0=no movement
           mouse->battery()       // 0=Unk, 1=Empty, 255=full
   );
@@ -217,8 +217,8 @@ void processBalanceBoard(ControllerPtr balance) {
 // Arduino loop function. Runs in CPU 1
 void loop() {
   // This call fetches all the controller info from the NINA (ESP32) module.
-  // Just call this function in your main loop.
-  // The controllers pointer (the ones received in the callbacks) gets updated
+  // Call this function in your main loop.
+  // The controllers' pointer (the ones received in the callbacks) gets updated
   // automatically.
   BP32.update();
 
