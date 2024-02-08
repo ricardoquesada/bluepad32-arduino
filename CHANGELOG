@@ -1,3 +1,6 @@
+Bluepad32 1.3.2 - 2024.02.08
+* Renamed to "Bluepad32 for NINA" to avoid confusion
+
 Bluepad32 1.3.1 - 2023.04.30
 * Add API to read Gyro/Accel
 * Update example to show how to do it
