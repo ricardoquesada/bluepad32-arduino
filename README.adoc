@@ -1,7 +1,7 @@
 // Define the repository information in these attributes
 :repository-owner: ricardoquesasda
 :repository-name: bluepad32-arduino
-:project-name: Bluepad32 for NINA
+:project-name: Bluepad32
 
 = {project-name} library for Arduino NINA =
 
