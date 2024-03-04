@@ -3,7 +3,7 @@
 :repository-name: bluepad32-arduino
 :project-name: Bluepad32
 
-= {project-name} library for Arduino NINA-W10 based boards =
+= {project-name} library for Arduino NINA-W10 boards =
 
 image::https://img.shields.io/discord/775177861665521725.svg[link=https://discord.gg/r5aMn6Cw5q]
 
