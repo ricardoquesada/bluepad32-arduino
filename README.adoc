@@ -19,7 +19,7 @@ Enables gamepad support for all NINA-W10 based boards. In particular these board
 
 If you are looking for Arduino running on ESP32 boards, check out this other project:
 
-* https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/docs/plat_arduino.md[Arduino + Bluepad32 on ESP32 boards]
+* https://bluepad32.readthedocs.io/en/latest/plat_arduino/[Arduino + Bluepad32 on ESP32 boards]
 
 == Supported gamepads ==
 
