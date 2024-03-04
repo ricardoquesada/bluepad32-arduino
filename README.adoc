@@ -3,13 +3,13 @@
 :repository-name: bluepad32-arduino
 :project-name: Bluepad32
 
-= {project-name} library for Arduino NINA =
+= {project-name} library for Arduino NINA-W10 based boards =
 
 image::https://img.shields.io/discord/775177861665521725.svg[link=https://discord.gg/r5aMn6Cw5q]
 
 image::img/bluepad32-arduino-logo.png[logo]
 
-Enables gamepad support for all NINA-based boards. In particular these boards:
+Enables gamepad support for all NINA-W10 based boards. In particular these boards:
 
 * https://store.arduino.cc/usa/nano-rp2040-connect-with-headers[Arduino Nano RP2040 Connect]
 * https://store.arduino.cc/usa/nano-33-iot[Arduino Nano 33 IoT]
@@ -40,22 +40,22 @@ For a complete list, see: https://bluepad32.readthedocs.io/en/latest/supported_g
 
 == How does it work ==
 
-As mentioned above, only  boards with the NINA (ESP32) co-processor are supported.
+As mentioned above, only  boards with the NINA-W10 (ESP32) co-processor are supported.
 This is because the project consists of two parts:
 
 * "Bluepad32 library for Arduino", runs on the main processor: "C"
-* "Bluepad32 firmware", runs on the NINA co-processor: "B"
+* "Bluepad32 firmware", runs on the NINA-W10 co-processor: "B"
 
 image::img/bluepad32-how-does-it-work.png[how does it work]
 
 
-The gamepads (A), using Bluetooth, connect to the NINA co-processor (B).
+The gamepads (A), using Bluetooth, connect to the NINA-W10 co-processor (B).
 
-And NINA (B) sends the gamepad data to the main processor \(C). In this case the
+And NINA-W10 (B) sends the gamepad data to the main processor \(C). In this case the
 main processor is the RP2040, but it could be different on other boards. As an example,
 on the Nano 33 IoT, the main processor is the SAMD 21.
 
-So, in order to use the library you have to flash the "Bluepad32 firmware" on NINA.
+So, in order to use the library you have to flash the "Bluepad32 firmware" on NINA-W10.
 This is a simple step that needs to be done just once, and can be undone at any time.
 Info about Bluepad32 firmware is avaiable here:
 
