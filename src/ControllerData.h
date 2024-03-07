@@ -7,7 +7,7 @@
 #include <inttypes.h>
 
 // Must match nina_controller_t defined here:
-// https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/src/components/bluepad32/uni_platform_nina.c
+// https://github.com/ricardoquesada/bluepad32/blob/main/src/components/bluepad32/platform/uni_platform_nina.c
 
 enum {
   CONTROLLER_CLASS_NONE,

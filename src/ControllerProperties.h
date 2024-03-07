@@ -5,7 +5,7 @@
 #define BP32_CONTROLLER_PROPERTIES_H
 
 // Must match nina_controller_properties_t defined here:
-// https://gitlab.com/ricardoquesada/bluepad32/-/blob/main/src/components/bluepad32/uni_platform_nina.c
+// https://github.com/ricardoquesada/bluepad32/blob/main/src/components/bluepad32/platform/uni_platform_nina.c
 
 enum {
   CONTROLLER_PROPERTY_FLAG_RUMBLE = 1UL << 0,
